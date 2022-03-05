@@ -7,19 +7,40 @@
 <!-- Bootstrap 5.1.3 is going to be used for the default navigation and styling. Any additional modifications can be made.
    The original source can be found here. https://getbootstrap.com/
    -->
-<html class="container: mt-4">
+<html class="container: mt-4" lang="en">
+
+<script>
+
+    var tooltipTriggerList = [].slice(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+
+</script>
 
 <head>
-    <script src="javascripts/toast.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+
+
     <link href="stylesheets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="stylesheets/css/bootstrap.min.css.map" rel="stylesheet" />
     <link href="javascripts/js/bootstrap.bundle.min.js" rel="script" />
     <link href="javascripts/js/bootstrap.bundle.min.js.map" rel="script" />
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/@popperjs/core@2">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    </script>
+
     <!-- Bootstrap Icons Font -->
     <!-- Bootstrap Popper -->
     <script href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -108,7 +129,20 @@
 </header>
 
 <body>
-<link href="javascripts/toast.js" rel="script" />
+
+<!-- Links to Bootstrap JS, Popper, Custom JS-->
+
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="toast.js" async>
+
+</script>
+
+
+
+
+
 
 <div class="container" , style="object-fit: cover; object-position: center; container-fluid: 100%; margin-bottom: 20px;">
     <h4>Test</h4>
@@ -2602,22 +2636,35 @@ Containers, Rows, Columns, Flexbox/CSS
         </div>
     </div>
 </div>
+
+<hr>
+
 <h1>Basic Toast</h1>
 <button type="button" class="btn btn-danger" id="basicToastBtn">Join us</button>
-<button type="button" class="btn btn-info text-whtie" id="infoToastBtn">Info</button>
+
+<button type="button" class="btn btn-info text-white" id="infoToastBtn">Info</button>
 
 
-<script>
+
+<!--<script>
     document.querySelector("#basicToastBtn").onclick = function() {
         new bootstrap.Toast(document.querySelector("#basicToast")).show();
+    }
+</script>-->
+
+<script>
+    document.getElementById('basicToastBtn').onclick = function() {
+     new bootstrap.Toast(document.getElementById('basicToast')).show();
     }
 </script>
 
 
 
 <div class="toast-container position-fixed top-0 end-0 p-3">
-    <div id="basicToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-        <div class="toast-header bg-primary text-light text-light d-flex justify-content-between">
+
+
+    <div id="basicToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+        <div class="toast-header bg-primary text-light">
             <h5 class="my-0">Join Our Company</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="close"></button>
         </div>
@@ -2625,66 +2672,933 @@ Containers, Rows, Columns, Flexbox/CSS
             <strong>Mind Numbing Products</strong> is a force in the manufacturing and productive market. Out motto is if it's not Mind Numbing, it's not worth it.
         </div>
     </div>
-    <div id="infoToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="false">
-        <div class="toast-body bg-info text-light d-flex justify-content-between">
-            <p class="mb-0">As experts in lifting, moving, and nuts-and-bolting, the robotic population!</p>
-            <button type="button" class="btn-close btn-close-white ms-3" data-bs-dismiss="toast" aria-label="Close"></button>
+</div>
+
+<hr>
+
+<h1>Basic Toast</h1>
+<button type="button" class="btn btn-danger" id="basicToastBtn1">Join us</button>
+
+<button type="button" class="btn btn-info text-white" id="toastyInfoButton">Info</button>
+
+<script>
+    document.getElementById('basicToastBtn1').onclick = function() {
+        new bootstrap.Toast(document.getElementById('basicToast1')).show();
+    }
+    document.getElementById('toastyInfoButton').onclick = function() {
+        new bootstrap.Toast(document.getElementById('infoToasty')).show();
+    }
+</script>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+
+
+    <div id="basicToast1" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" data-bs-autohide="false">
+        <div class="toast-header bg-primary text-light d-flex justify-content-between">
+            <h5 class="my-0">Join Our Company</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
+        <div class="toast-body">
+            <strong>Mind Numbing Products</strong> is a force in the manufacturing and productive market. Out motto is if it's not Mind Numbing, it's not worth it.
+        </div>
+    </div>
+
+
+    <div id="infoToasty" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true" aria-autocomplete="false">
+        <div class="toast-body bg-info text-light d-flex justify-content-between">
+            <p class="mb-0">As experts..... hmmm....</p>
+            <button type="button" class="btn-close btn-close-white ms-3" data-bs-dismiss="toast" aria-label="close"></button>
+        </div>
+    </div>
+
+
+</div>
+
+<hr>
+
+<h1>Basic Modal</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Space Robots
+</button>
+
+<div id="exampleModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Problem Solved</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
+<hr>
+
+<h1>Modal options</h1>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#centeredModal">
+    Centered
+</button>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sizedModal">
+    Sized
+</button>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#fullScreenModal">
+    Full Screen
+</button>
+
+<div id="centeredModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Problem Solved</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="sizedModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Problem Solved</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="fullScreenModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-lg-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Success</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Problem Solved</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<hr>
+
+<h1>Collapse</h1>
+
+<h4 class="text-secondary">Single Collapse</h4>
+
+<div class="d-flex">
+    <div>
+        <a class="btn btn-primary bg-primary"
+           data-bs-toggle="collapse"
+           href="#productsExample"
+           role="button"
+           aria-expanded="false"
+           aria-controls="productsExample">
+            href
+        </a>
+    </div>
+    <div class="ms-3">
+        <button class="btn btn-info text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#expoertsExample"
+                aria-expanded="false"
+                aria-controls="expertsExample">
+            data-bs-target
+        </button>
+
+    </div>
+</div>
+
+<hr>
+
+<h4 class="text-secondary">Multiple Collapse</h4>
+
+<div class="d-flex">
+    <div>
+        <a class="btn btn-primary bg-primary"
+           data-bs-toggle="collapse"
+           href=".multi-collapse"
+           role="button"
+           aria-expanded="false"
+           aria-controls="productsExample">
+            href
+        </a>
+    </div>
+    <div class="ms-3">
+        <button class="btn btn-info text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target=".multi-collapse"
+                aria-expanded="false"
+                aria-controls="expertsExample">
+            data-bs-target
+        </button>
+
+    </div>
+</div>
+
+<hr>
+
+<div class="collapse multi-collapse" id="productsExample">
+    <strong>Mind Numbing Products</strong> is a force of nature!
+</div>
+
+
+<div class="collapse multi-collapse" id="expertsExample">
+   We are all experts here... right? Am I doing this right?
+</div>
+
+<hr>
+
+<h1>Dropdown</h1>
+
+<h4 class="text-secondary">Dropdown</h4>
+
+<span class="dropdown">
+
+    <button class="btn btn-primary bg-primary dropdown-toggle"
+            type="button"
+            id="dropdownMicroProcessor"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Button Dropdown
+    </button>
+<ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<hr>
+
+<h4 class="text-secondary">Anchor Dropdown</h4>
+
+<span class="dropdown">
+    <a class="btn btn-info dropdown-toggle"
+       type="button"
+       id="dropdownMicroProcessor"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+        Anchor Trigger
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+</div>
+
+<hr>
+
+<h1>Dropdown Button Group</h1>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-success">Action</button>
+    <a class="btn btn-success dropdown-toggle dropdown-toggle-split"
+       type="button"
+       id="dropdownMicroprocessor"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+        <span class="visually-hidden">Button Group</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<h1>Dropdown Options</h1>
+
+<h4 class="text-secondary">Responsive Alignment</h4>
+
+<span class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Alignment with container on an extremely long menu
+    </button>
+    <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<hr>
+
+<h4 class="text-secondary">Dropdown End</h4>
+
+<span class="dropend">
+    <button class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Dropdown End
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<span class="dropstart mt-4 w-100 d-flex align-items-end">
+    <button class="btn btn-secondary dropdown-toggle ms-auto"
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Dropdown start
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<span class="dropup mt-4 d-flex align-items-end">
+    <button class="btn btn-secondary dropdown-toggle "
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Dropdown Up
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+
+<hr>
+
+<h4 class="text-secondary">Dark Dropdown</h4>
+
+<span class="dropdown mt-4 d-flex align-items-end">
+    <button class="btn btn-secondary dropdown-toggle "
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Dark Dropdown
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMicroProcessor">
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item" href="#">Embedded Processor</a></li>
+        <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<hr>
+
+<h1>Dropdown Content</h1>
+
+<span class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle "
+            type="button"
+            id="dropdownMicroProcessorTrigger"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+        Dropdown Content
+    </button>
+     <ul class="dropdown-menu" aria-labelledby="dropdownMicroProcessor">
+         <li><div class="dropdown-header">Dropdown Header</div></li>
+        <li><a class="dropdown-item" href="#">Microcontroller</a></li>
+        <li><a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Embedded Processor</a></li>
+        <li><div class="dropdown-item p-4 text-muted">
+            Robots eh?
+        </div></li>
+         <li><hr class="dropdown-divider"></li>
+         <li><a class="dropdown-item" href="#">DSP</a></li>
+        <li><a class="dropdown-item active" href="#">Media Processor</a></li>
+    </ul>
+</span>
+
+<br>
+<br>
+<br>
+
+
+<hr>
+
+<script>
+    src="https://unpkg.com/@popperjs/core@2"
+    var tooltipTriggerList = [].slice(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+
+
+
+</script>
+
+
+<div class="container mt-4">
+    <h1>Tooltips</h1>
+
+    <div class="d-inline-flex flex-column gap-3">
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="top"
+        id="toastyInfoButton">
+           Top
+        </button>
+
+
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="right"
+                title="right">
+            Right
+        </button>
+
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="bottom">
+            Bottom
+        </button>
+
+        <button type="button"
+                class="btn btn-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
+                title="left">
+            Left
+        </button>
+    </div>
+</div>
+
+<hr>
+
+<div class="container mt-4">
+<script>
+
+
+    import { createPopper } from '@popperjs/core';
+    const popcorn = document.querySelector('#pop');
+    const tooltip = document.querySelector('#tooltip');
+    createPopper(popcorn, tooltip, {
+        placement: 'top',
+    });
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
+</script>
+
+
+    <h1>Popovers</h1>
+    <div class="d-inline-flex flex-column gap-3">
+        <button type="button"
+                id="pop"
+                class="btn btn-secondary"
+                data-bs-container="body"
+                data-bs-popper="true"
+                data-bs-toggle="popover"
+                data-bs-placement="top"
+                data-bs-content="Top Popover"
+                title="Headline">
+            Popover on Top
+        </button>
+
+    </div>
+</div>
+
+<hr>
+<div class="container">
+    <h1 class="mt-4 mb-2">Scrollspy</h1>
+
+    <nav class="nav nav-pills" id="robotNav">
+        <a href="#dolores" class="nav-link active">Dolores</a>
+        <a href="#bubbles" class="nav-link" aria-current="page" href="#">Bubbles</a>
+        <a href="#cosmo" class="nav-link">Cosmo</a>
+    </nav>
+
+
+    <div class="position-relative mt-3"
+    data-bs-spy="scroll"
+    data-bs-offset="100"
+    tabindex="0"
+    style="height: 400px; overflow:scroll">
+        <h4 id="dolores">Dolores</h4>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h4 id="bubbles">Bubbles</h4>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        <h4 id="cosmo">Cosmo</h4>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
 
 
 
 
 
+</div>
+
+<hr>
+
+<nav class="position-relative" data-bs-spy="scroll">
+    <nav class="navbar navbar-expand-xl bg-primary navbar-dark position-fixed w-100 top-0 left-0">
+        <div class="container">
+            <a class="navbar-brand" href="#top">Home</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#top">Home</a>
+                        <a href="#dolores1" class="nav-link">Dolores</a>
+                        <a href="#bubbles1" class="nav-link" aria-current="page" href="#">Bubbles</a>
+                        <a href="#cosmo1" class="nav-link">Cosmo</a>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 style="padding-top:100px;" id="top">ScrollSpy</h1>
+
+
+                        <h2 class="text-primary" style="padding-top:100px; margin-top:-100px" id="dolores1">Dolores</h2>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <h2 class="text-primary" style="padding-top:100px; margin-top:-100px" id="bubbles1">Bubbles</h2>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                        <h2 class="text-primary" style="padding-top:100px; margin-top:-100px" id="cosmo1">Cosmo</h2>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+                        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    </div>
+            </div>
+        </div>
+    </nav>
+</nav>
+
+
+<hr>
+< class="container">
+<h1>Basic Form</h1>
+
+<form>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">Name</label>
+        <input type="name" class="form-control" id="humanName" aria-describedby="nameHelp">
+        <div id="nameHelp" class="form-text">Let us know your name... human</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="whyFun" class="form-label fw-bold">Why is not being a robot fun?</label>
+        <textarea class="form-control" id="whyFun" rows="3"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+
+    <hr>
+
+
+    <h1>Select Fields</h1>
+    <h4 class="text-secondary">Select Field</h4>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">What kind of camper do you plan to bring?</label>
+        <select class="form-select">
+            <option selected>Choose...</option>
+            <option value="Trailer">A vintage travel trailer</option>
+            <option value="Class A">A Class-A Bus or Motorhome</option>
+            <option value="Tent">A self-building tent</option>
+        </select>
+    </div>
+
+    <h4 class="text-secondary">Select Sizes</h4>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">What kind of camper do you plan to bring?</label>
+        <select class="form-select form-select-sm">
+            <option selected>Choose...</option>
+            <option value="Trailer">A vintage travel trailer</option>
+            <option value="Class A">A Class-A Bus or Motorhome</option>
+            <option value="Tent">A self-building tent</option>
+        </select>
+    </div>
+
+    <h4 class="text-secondary">Select Sizes</h4>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">What kind of camper do you plan to bring?</label>
+        <select class="form-select form-select-lg">
+            <option selected>Choose...</option>
+            <option value="Trailer">A vintage travel trailer</option>
+            <option value="Class A">A Class-A Bus or Motorhome</option>
+            <option value="Tent">A self-building tent</option>
+        </select>
+    </div>
+
+
+    <h4 class="text-secondary">Select Sizes</h4>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">What kind of camper do you plan to bring?</label>
+        <select class="form-select form-select" disabled>
+            <option selected>Choose...</option>
+            <option value="Trailer">A vintage travel trailer</option>
+            <option value="Class A">A Class-A Bus or Motorhome</option>
+            <option value="Tent">A self-building tent</option>
+        </select>
+    </div>
+
+    <h4 class="text-secondary">Select Sizes</h4>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">What kind of camper do you plan to bring?</label>
+        <select class="form-select " multiple size="2">
+            <option selected>Choose...</option>
+            <option value="Trailer">A vintage travel trailer</option>
+            <option value="Class A">A Class-A Bus or Motorhome</option>
+            <option value="Tent">A self-building tent</option>
+        </select>
+    </div>
+
+    <hr>
+
+    <h1>Range</h1>
+
+    <label for="robotLoveRange" class="form-label">How much do you love robots?</label>
+    <input type="range" class="form-range" min="1" max="10" id="robotLoveRange">
+
+    <hr>
+
+
+    <h4 class="text-secondary">Input Fields</h4>
+    <div class="form-floating">
+        <input type="name" class="form-control" id="humanName" aria-describedby="nameHelp" placeholder="Name">
+        <label for="humanName">Name</label>
+    </div>
+
+<hr>
+
+    <h4 class="text-secondary">Select</h4>
+
+
+<hr>
+
+    <h1>Form Checkboxes and Radio</h1>
+
+    <h4 class="text-secondary">Checkbox</h4>
+
+
+    <p class="form-label">
+        <span class="fw-bold">What vintage camper club mumberships do you currently hold?</span>
+<br>Choose all that are applicable. </p>
+
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="checkboxTinCan">
+    <label class="form-check-label" for="checkboxTinCan">
+        Tin Cans in Tin Cans
+    </label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="checkboxRollingHomes">
+    <label class="form-check-label" for="checkboxRollingHomes">
+        Rolling Homes
+    </label>
+</div>
+
+<hr>
+
+<h4 class="text-secondary">Radio</h4>
+<p class="form-label">
+<span class="fw-bold">Choose which membership you prefer?</span>
+    <br>Choose all that are applicable.</p>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="membershipChoice" value="Tin Can" id="radioTinCan">
+    <label class="form-check-label" for="radioTinCan">
+        Tin Cans in Tin Cans
+    </label>
+</div>
+
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="membershipChoice" value="Rolling Homes" id="radioRollingHomes">
+    <label class="form-check-label" for="radioRollingHomes">
+        Rolling Homes
+    </label>
+</div>
+
+<hr>
+
+<h4 class="text-secondary">Inline</h4>
+<p class="form-label">
+    <span class="fw-bold">Choose which membership you prefer?</span>
+    <br>Choose all that are applicable.</p>
+
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="membershipChoice" value="" id="checkboxTinCan">
+    <label class="form-check-label" for="checkboxTinCan">
+        Tin Cans in Tin Cans
+    </label>
+</div>
+
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" name="membershipChoice" value="" id="checkboxRollingHomes">
+    <label class="form-check-label" for="checkboxRollingHomes">
+        Rolling Homes
+    </label>
+</div>
+<hr>
+
+<h4 class="text-secondary">Switches</h4>
+<p class="form-label">
+    <span class="fw-bold">What membership?</span>
+    <br>Choose all that are applicable.</p>
+
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" name="membershipChoice" value="" id="switchTinCan">
+    <label class="form-check-label" for="switchTinCan">
+        Tin Cans in Tin Cans
+    </label>
+</div>
+
+<div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" name="membershipChoice" value="" id="switchRollingHomes">
+    <label class="form-check-label" for="switchRollingHomes">
+        Rolling Homes
+    </label>
+</div>
+
+<hr>
+
+<h4 class="text-secondary">Button</h4>
+<p class="form-label">
+    <span class="fw-bold">What membership?</span>
+    <br>Choose all that are applicable.</p>
+
+
+    <input class="btn-check" type="checkbox" value="" id="buttonTinCan">
+    <label class="btn btn-outline-primary" for="buttonTinCan">
+        Tin Cans in Tin Cans
+    </label>
 
 
 
+    <input class="btn-check" type="checkbox" value="" id="buttonRollingHomes">
+    <label class="btn btn-outline-primary" for="buttonRollingHomes">
+        Rolling Homes
+    </label>
+
+<h1>Input Groups</h1>
+
+<h4 class="text-secondary">Input Groups</h4>
+
+<div class="input-group mb-3">
+    <span class="input-group-text bg-success text-white" id="basic-addon1">Camper Type</span>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+
+</div>
+
+<hr>
+
+<h4 class="text-secondary">Input Group Small</h4>
+
+<div class="input-group input-group-sm mb-3">
+    <div class="input-group-text">
+        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+    </div>
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+<hr>
+
+<h4 class="text-secondary">Input Group Large</h4>
+
+<div class="input-group input-group-lg mb-3">
+    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+    <button class="btn btn-primary" type="button" id="button-addon2">Button</button>
+</div>
+
+<br>
+
+<hr>
+
+<h1>Validation</h1>
+
+<hr>
+<nav class="container">
+
+<form class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="humanName" class="form-label fw-bold">Name</label>
+        <input type="name" required class="form-control" id="humanName" aria-describedby="nameHelp">
+        <div id="nameHelp" class="form-text">Let us know your name...human</div>
+        <div class="valid-feedback">
+            Acceptable name
+        </div>
+        <div class="invalid-feedback">
+            Sorry Terran, not a valid username
+        </div>
+    </div>
+    <button type="submit" class="btn btn-secondary">submit</button>
+</form>
+
+<hr>
 
 
 
+<script>
+
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+    })()
 
 
 
+</script>
 
-
-
-
-
-
-
-
-
+</nav>
 
 
 </body>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
+
 <!--
                                <h4 class="text-secondary">1x1</h4>
                                <div class="ratio ratio-1x1">
