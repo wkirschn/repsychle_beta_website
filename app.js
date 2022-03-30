@@ -1,4 +1,16 @@
+
+
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config();
+}
+
+
 var createError = require('http-errors');
+
+
+
+
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -15,9 +27,11 @@ const loginRouter = require('./routes/login_t')
  */
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser : true})
+// mongoose.connect(process.env.DATABASE_URL).then(r => console.error(r));
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error => console.error(error))
+db.once('open', () => console.log('Connected to Mongoose'))
 
 
 var app = express();
