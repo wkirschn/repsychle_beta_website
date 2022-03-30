@@ -10,10 +10,21 @@ const testRouter = require('./routes/test');
 
 const loginRouter = require('./routes/login_t')
 
+/*
+  Implementing MongoDB
+ */
+
+const mongoose = require('mongoose')
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser : true})
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+
 
 var app = express();
 
 app.use('/favicon.ico', express.static('./public/images/'));
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

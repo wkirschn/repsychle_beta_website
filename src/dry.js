@@ -7,7 +7,7 @@ console.log("Index.js works!");
 
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, deleteDoc} from 'firebase/firestore';
 
 
 
@@ -31,3 +31,59 @@ initializeApp(firebaseConfig)
 // init the services
 
 const db = getFirestore()
+
+// collection ref
+
+const colRef = collection(db, 'all_objects')
+
+
+
+// get the collection data
+
+getDocs(colRef).then((snapshot) => {
+   let objects = []
+    snapshot.docs.forEach((doc) => {
+        objects.push({ ...doc.data(), id: doc.id})
+    })
+    console.log(objects)
+})
+.catch(err => {
+    console.log(err.message)
+})
+
+
+
+
+// Adding New Documents
+
+const addObjectForm = document.querySelector('.add')
+addObjectForm.addEventListener('event', (e) => {
+    e.preventDefault()
+
+    console.log("ADDED");
+
+
+    addDoc(colRef, {
+        objectName: addObjectForm.objectCategory.value,
+        objectCategory: addObjectForm.objectCategory.value,
+    objectDescription: addObjectForm.objectCategory.value,
+    disposalMethod: addObjectForm.objectCategory.value,
+    objectLong: addObjectForm.objectCategory.value,
+    objectLat: addObjectForm.objectCategory.value,
+    ecoScore: addObjectForm.objectCategory.value,
+     })
+        .then(() => {
+            addObjectForm.reset()
+            console.log("ADDED");
+        })
+
+
+})
+
+// Deleting Documents
+/*
+
+const deleteObjectForm = document.querySelector('.delete')
+deleteObjectForm.addEventListener('event', (e) => {
+    e.preventDefault()
+})*/

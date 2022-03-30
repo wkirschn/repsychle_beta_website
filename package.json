@@ -18,7 +18,7 @@
     "firebase": "^9.6.10",
     "firebaseui": "^6.0.1",
     "http-errors": "~1.6.3",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.2.9",
     "morgan": "~1.9.1",
     "rollup": "^2.70.1"
   },
@@ -27,6 +27,7 @@
   "author": "Wyatt Kirschner - 200407722",
   "license": "ISC",
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "gulp-sri-hash": "^2.2.1",
     "hbs": "^4.1.0",
     "nodemon": "^2.0.15",

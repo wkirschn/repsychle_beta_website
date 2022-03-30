@@ -1,12 +1,12 @@
-
 console.log("Index.js works!");
 const express = require('express');
+
 const router = express.Router();
 console.log("Index.js works!");
-//
 
 
-// Encodes the Forms
+
+
 
 router.use(express.urlencoded({extended: false}))
 
@@ -30,12 +30,14 @@ router.get('/login', function(req, res, next) {
 
 });
 
-/*POST register page. */
+/*POST login page. */
 
 router.post('/login', (req, res) => {
 
-});
 
+
+
+})
 
 /* GET register page. */
 router.get('/register', function(req, res, next) {
@@ -49,12 +51,27 @@ router.get('/register', function(req, res, next) {
 
 router.post('/register', (req, res) => {
 
-    req.body.firs
+req.body.name
 
 
 });
 
 
+/* GET add-object page. */
+router.get('/add-object', function(req, res, next) {
+    res.render('add-object', {title: 'RePsychle'}
+
+    );
+
+});
+
+/* POST add-object page. */
+router.post('/add-object', function(req, res, next) {
+
+
+
+res.render('index')
+});
 
 
 

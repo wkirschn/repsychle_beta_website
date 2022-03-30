@@ -583,43 +583,62 @@ Source: https://www.youtube.com/watch?v=9zdvmgGsww0&list=PL4cUxeGkcC9jERUGvbudEr
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
-<h1>Register Testing</h1>
+<h1>TESTING</h1>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-<form action="/register" method="post">
 
-<div>
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required>
-    <hr>
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-    <hr>
-    <label for="password">Name</label>
-    <input type="password" id="password" name="password" required>
-    <hr>
-    <button type="submit">Register</button>
+<form class="add" action="post">
+    <label for="objectName">Object Name: </label>
+    <input type="text" name="objectName" required>
+    <br>
+    <label for="objectCategory">Object Category: </label>
+    <input type="text" name="objectCategory" required>
+    <br>
+    <label for="objectDescription">Object Description: </label>
+    <input type="text" name="objectDescription" required>
+    <br>
+    <label for="disposalMethod">Disposal Method: </label>
+    <input type="text" name="disposalMethod" required>
+    <br>
+    <label for="objectRegion">Object Region: </label>
+    <input type="text" name="objectLong" required>
+    <input type="text" name="objectLat" required>
+    <br>
+    <label for="ecoScore">EcoScore: </label>
+    <input type="text" name="ecoScore" required>
+    <br>
+  <!--  <label for="image">Object Image: </label>
+    <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+    <br>-->
+    <button>Add a New Object</button>
 
-</div>
+
+    <!--
+    Google Maps API, have to grab LAT AND LONG
+    -->
+
+  <!--  <form class="delete">
+        <label for="id">Document ID: </label>
+        <input type="text" name="id" required>
+
+        <button>Delete an Object</button>
+    </form>
+-->
 
 
+    <div>
+
+
+    </div>
 
 </form>
-<a href="/login">Login</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script src="../javascripts/bundle.js"></script>
+
+
+
+
+
+
 </body>
 </html>

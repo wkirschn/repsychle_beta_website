@@ -40,7 +40,7 @@ signupForm.addEventListener('submit', (e) =>{
     const db = firebase.firestore();
 
     e.preventDefault();
-    // First we need to set the variables and have the values for each input placed in their respective place
+    // First we need to set the variables a nd have the values for each input placed in their respective place
     const firstName = signupForm['firstName'].value;
     const lastName = signupForm['lastName'].value;
     const emailAddress = signupForm['emailAddress'].value;

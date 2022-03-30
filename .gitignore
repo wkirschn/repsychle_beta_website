@@ -1,2 +1,5 @@
 # Project exclude paths
 /node_modules/
+
+# Env could store secret variables
+.env
