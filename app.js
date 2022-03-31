@@ -38,9 +38,7 @@ const dbURI = process.env.DATABASE_URL;
   Implementing MongoDB
  */
 
-if(process.env.NODE_ENV !== 'production') {
-require('dotenv').config()
-}
+
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 const db = mongoose.connection
