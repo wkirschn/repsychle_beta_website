@@ -4,15 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 
-const testRouter = require('./routes/test');
+var testRouter = require('./routes/test');
 
-const loginRouter = require('./routes/login_t');
+var loginRouter = require('./routes/login_t');
 
 var usersRouter = require('./routes/users');
 
-var app = express();
+
 
 /* Upload Middleware https://dev.to/cyberwolve/how-to-upload-and-store-images-in-mongodb-database-c3f */
 
@@ -23,10 +23,14 @@ const Strategy = require('passport-local').Strategy;
 const session = require('express-session');
 const flash = require('connect-flash');
 const authUtils = require('./utils/auth');
+const authRouter = require('./routes/auth');
+const hbs = require('hbs');
 
+const app = express();
 
+app.use(flash());
 /* Connect to MongoDB for Users */
-
+require('dotenv/config');
 MongoClient.connect(process.env.DATABASE_URL, (err, client) => {
   if(err) {
     throw err;
@@ -52,7 +56,7 @@ passport.use(new Strategy((username, password, done) => {
     if (user.password != authUtils.hashPassword(password)) {
       return done(null, false);
     }
-    return(null, user);
+    return done(null, user);
   })
 }));
 
@@ -82,7 +86,7 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTop
 
 const Object=  require('./models/object')
 
-const {MongoClient} = require("mongodb");
+
 
 /* CREATING AN OBJECT */
 
@@ -173,6 +177,7 @@ app.use('/favicon.ico', express.static('./public/images/'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(path.join(__dirname,'views/partials'));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -185,21 +190,22 @@ app.use(session({
   saveUninitialized: false
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+
 
 app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
   next();
 });
-
+app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/test/', testRouter);
 app.use('/login', loginRouter);
 app.use("/public/", express.static('public'));
 
-hbs.registerPartials(path.join(__dirname), 'views/partials');
+
 
 
 
