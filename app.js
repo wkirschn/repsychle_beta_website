@@ -9,37 +9,118 @@ const indexRouter = require('./routes/index');
 const testRouter = require('./routes/test');
 
 const loginRouter = require('./routes/login_t');
-const mongoose = require('mongoose');
 
-
+var usersRouter = require('./routes/users');
 
 var app = express();
 
+/* Upload Middleware https://dev.to/cyberwolve/how-to-upload-and-store-images-in-mongodb-database-c3f */
 
-/*
-/!*Mongo DB*!/
 
-const morgan = require('morgan')
+const MongoClient = require('mongodb').MongoClient;
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+const session = require('express-session');
+const flash = require('connect-flash');
+const authUtils = require('./utils/auth');
+
+
+/* Connect to MongoDB for Users */
+
+MongoClient.connect(process.env.DATABASE_URL, (err, client) => {
+  if(err) {
+    throw err;
+  }
+
+  const db = client.db('user-profiles');
+  const users = db.collection('users');
+  app.locals.users = users;
+});
+
+
+/* Passport Setter for User Management */
+
+passport.use(new Strategy((username, password, done) => {
+  app.locals.users.findOne({ username }, (err, user) => {
+    if (err) {
+      return done(err);
+    }
+
+    if (!user) {
+      return done(null, false);
+    }
+    if (user.password != authUtils.hashPassword(password)) {
+      return done(null, false);
+    }
+    return(null, user);
+  })
+}));
+
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+});
+
+passport.deserializeUser((id, done) => {
+  done(null, {id});
+});
+
+
+require('dotenv/config');
+
+
+/*Mongo DB*/
+
+
 
 const dbURI = process.env.DATABASE_URL;
 
-// Connect to MongoDB
+const mongoose = require("mongoose");
 
-*/
+mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, error => {
+  console.log('connected');
+});
 
+const Object=  require('./models/object')
 
+const {MongoClient} = require("mongodb");
 
+/* CREATING AN OBJECT */
 
+app.get('/add-object-action', (req,res) => {
+  const object = new Object({
 
+    objectName: 'Tempest',
+    objectDescription: 'It is in a teapot!',
+    objectCategory: 'ceramic',
+    disposalMethod: 'garbage',
+    disposalRegionLatitude: '100.200',
+    disposalRegionLongitude: '-90.211',
+    ecoScore: 'LOW'
+  });
+  object.save().then((result) => {
+    res.send(result)
+  })
+      .catch((err) => {
+        console.log(err)
+      })
 
-/*const {MongoClient} = require("mongodb");*/
+})
+
+/*app.get('/all-objects', ())*/
+
 
 /*
   Implementing MongoDB
  */
 
 
+/*
+if(process.env.DATABASE_URL) {
+  require('dotenv').config()
+}
 
+
+const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
 const db = mongoose.connection
 db.on('error', error => console.error(error))
@@ -48,6 +129,7 @@ db.once('open', () => console.log('Connected'))
 
 
 
+*/
 
 
 
@@ -97,14 +179,28 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'session secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.loggedIn = req.isAuthenticated();
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/test/', testRouter);
 app.use('/login', loginRouter);
 app.use("/public/", express.static('public'));
 
+hbs.registerPartials(path.join(__dirname), 'views/partials');
 
-app.listen(process.env.PORT || 4000)
 
 
 // catch 404 and forward to error handler
