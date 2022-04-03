@@ -1,0 +1,27 @@
+<h2>Hello {{ username }}! Edit your profile here!</h2>
+<form action="/users" method="POST">
+    <div class="form-group">
+        <label for="username">Username: </label>
+        <input type="text" class="form-control" name="username" id="username" placeholder="{{ username }}" value="{{ username }}" readonly>
+        {{username}}
+    </div>
+    <div class="form-group">
+        <label for="name">First Name:</label>
+        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{firstName}}" value="{{firstName}}">
+        {{firstName}}
+    </div>
+    <div class="form-group">
+        <label for="name">Last Name:</label>
+        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="{{lastName}}" value="{{lastName}}">
+    </div>
+    <div class="form-group">
+        <label for="name">Password:</label>
+        <input type="password" class="form-control" name="password" id="password" value="{{password}}">
+    </div>
+
+
+    <button class="btn btn-primary">Update</button>
+</form>
+
+<p><a href="../users/profile" target="_blank">View your profile</a></p>
+<p><a href="/auth/logout" target="_blank">Logout of your Profile</a></p>

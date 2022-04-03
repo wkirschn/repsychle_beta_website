@@ -200,6 +200,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/auth', authRouter);
+app.use('/users', usersRouter);
 app.use('/', indexRouter);
 app.use('/test/', testRouter);
 app.use('/login', loginRouter);

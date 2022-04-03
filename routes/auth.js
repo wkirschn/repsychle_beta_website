@@ -23,13 +23,13 @@ router.get('/register', (req, res, next) => {
 
 router.post('/register', (req, res, next) => {
     const registrationParams = req.body;
-    const users = req.app.locals.users;
+    const emailAddress = req.app.locals.users;
     const payload = {
         username: registrationParams.username,
         password: authUtils.hashPassword(registrationParams.password)
     };
 
-    users.insertOne(payload, (err) => {
+    emailAddress.insertOne(payload, (err) => {
         if (err) {
             req.flash('error', 'Please use a unique username!')
         } else {
@@ -41,7 +41,7 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/logout', (req, res, next) => {
-    req.session.destory();
+    req.logout();
     res.redirect('/');
 });
 

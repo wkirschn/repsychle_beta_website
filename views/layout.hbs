@@ -15,6 +15,11 @@
 
   </head>
   <body>
+  {{#loggedin}}
+      <p class="text-right">
+          <a href="/auth/logout"></a>
+      </p>
+  {{/loggedin}}
     {{{body}}}
 
 

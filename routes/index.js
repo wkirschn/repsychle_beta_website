@@ -12,12 +12,16 @@ console.log("Index.js works!");
 
 router.use(express.urlencoded({extended: false}))
 
-/*
-/!* GET home page. *!/
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'RePsychle'}
 
-      );
+    const users = req.app.locals.users;
+
+    users.find().limit(3).toArray((err, recent) => {
+        res.render('index');
+    });
+
+
 
 
 
@@ -64,7 +68,7 @@ router.post('/register', (req, res, next) => {
 router.get('/logout', (req, res, next) => {
     req.session.destory();
     res.redirect('/');
-});*/
+});
 
 
 /* GET add-object page. */
