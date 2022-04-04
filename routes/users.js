@@ -4,6 +4,7 @@ var router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
 
 
+
 /* GET users listing. */
 router.get('/', (req, res, next) =>
 {
@@ -14,12 +15,15 @@ router.get('/', (req, res, next) =>
     const users = req.app.locals.users;
     const _id = ObjectID(req.session.passport.user);
 
+
     users.findOne({_id}, (err, results) => {
         if (err) {
             throw err;
         }
 
-        res.render('account', {...results});
+
+
+        res.render('account', {...results} );
 
     });
 
@@ -64,6 +68,9 @@ router.post('/', (req,res, next) => {
 
 })});
 
+router.post('/upload/', function(req,res) {
+    console.log("BEGIN")
+})
 
 
 

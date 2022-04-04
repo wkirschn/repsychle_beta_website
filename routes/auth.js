@@ -4,6 +4,7 @@ const authUtils = require('../utils/auth');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const localStrategy = require('passport-local');
+const FilePond = require('filepond');
 
 router.get('/login', (req, res, next) => {
     const messages = req.flash();
