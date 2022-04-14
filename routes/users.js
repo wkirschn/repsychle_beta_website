@@ -2,6 +2,32 @@ var express = require('express');
 const authUtils = require("../utils/auth");
 var router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
+const multer = require('multer')
+const {request} = require("express");
+
+//Define Storage for Images
+
+const storage = multer.diskStorage( {
+    destination: function(req, res, callback) {
+        callback(null, './public/images')
+    },
+
+    // add back the extension
+    filename: function (req, res, callback) {
+        callback(null, Date.now() + file.originalName);
+    },
+
+});
+
+// Upload paramaters for multer
+
+const upload = multer({
+    storage:storage,
+    limits: {
+        fieldSize:1024*1024*5,
+    },
+})
+
 
 
 
@@ -48,10 +74,26 @@ router.get('/profile', (req, res, next) => {
 
 });
 
-router.post('/', (req,res, next) => {
+router.post('/', upload.single('image'), (req,res, next) => {
     if (!req.isAuthenticated()) {
         res.redirect('/auth/login');
     }
+
+
+    //Define Storage for Images
+
+    const storage = multer.diskStorage( {
+        destination: function(req, res, callback) {
+            callback(null, './public/images')
+        },
+
+        // add back the extension
+        filename: function (req, res, callback) {
+            callback(null, Date.now() + file.originalName);
+        },
+
+    });
+
 
     const users = req.app.locals.users;
     const {username, firstName, lastName} = req.body;

@@ -31,11 +31,7 @@ const objectSchema = new Schema({
     ecoScore: {
         type: String,
         required: true
-    }/*,
-    objectImage: {
-        data: Buffer,
-        contentType: String
-    }*/
+    }
 
 }, { timestamps: true });
 

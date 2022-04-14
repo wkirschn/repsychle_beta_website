@@ -1,14 +1,23 @@
-import { create, registerPlugin } from 'filepond';
-import 'filepond/dist/filepond.css';
+FilePond.registerPlugin(
+    FilePondPluginFileValidateType,
+    FilePondPluginImageExifOrientation,
+    FilePondPluginImagePreview,
+    FilePondPluginImageCrop,
+    FilePondPluginImageResize,
+    FilePondPluginImageTransform,
+    FilePondPluginImageEdit
+);
 
-// Import the Image Preview plugin
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+FilePond.setOptions({
 
-// Register the plugin with FilePond
-registerPlugin(FilePondPluginImagePreview);
+        imageResizeTargetHeight: 250,
+        imageResizeTargetWidth: 250
+    }
+);
 
-// Get a file input reference
-const input = document.querySelector('input[type="file"]');
 
-// Create a FilePond instance
-create(input);
+// Select the file input and use
+// create() to turn it into a pond
+FilePond.parse(document.body);
+
+

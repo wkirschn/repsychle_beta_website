@@ -18,6 +18,8 @@ var usersRouter = require('./routes/users');
 
 
 const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;
+const dbname = "crud_mongodb";
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const session = require('express-session');
@@ -35,9 +37,11 @@ MongoClient.connect(process.env.DATABASE_URL, (err, client) => {
   if(err) {
     throw err;
   }
-
+  console.log("CONNECT!")
   const db = client.db('user-profiles');
+  const dbObject = client.db('repsychle');
   const users = db.collection('users');
+  const objectItems = dbObject.collection('objects');
   app.locals.users = users;
 });
 
@@ -80,94 +84,13 @@ const dbURI = process.env.DATABASE_URL;
 
 const mongoose = require("mongoose");
 
+/*
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true}, error => {
-  console.log('connected');
+  console.log('Connected to MongoDB');
 });
-
-const Object=  require('./models/object')
-
-
-
-/* CREATING AN OBJECT */
-
-app.get('/add-object-action', (req,res) => {
-  const object = new Object({
-
-    objectName: 'Tempest',
-    objectDescription: 'It is in a teapot!',
-    objectCategory: 'ceramic',
-    disposalMethod: 'garbage',
-    disposalRegionLatitude: '100.200',
-    disposalRegionLongitude: '-90.211',
-    ecoScore: 'LOW'
-  });
-  object.save().then((result) => {
-    res.send(result)
-  })
-      .catch((err) => {
-        console.log(err)
-      })
-
-})
-
-/*app.get('/all-objects', ())*/
-
-
-/*
-  Implementing MongoDB
- */
-
-
-/*
-if(process.env.DATABASE_URL) {
-  require('dotenv').config()
-}
-
-
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', () => console.log('Connected'))
-
-
-
-
 */
 
-
-
-/*
-async function main() {
-  const uri = "mongodb+srv://repsychle_production:thisisatestingpassword@cluster0.vtfzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
-  const client = new MongoClient(uri);
-
-  try {
-    await client.connect();
-
-    await listDatabases(client);
-
-
-  }
-
-  catch (e) {
-    console.error(e);
-  } finally {
-    await client.close();
-  }
-}
-main().catch(console.error);
-
-async function listDatabases(client) {
-  const databasesList = await client.db().admin().listDatabases();
-
-  console.log("Databases: ");
-  databasesList.databases.forEach(db => {
-    console.log('- ${db.name}');
-  })
-}
-*/
+const Object =  require('./models/object')
 
 
 app.use('/favicon.ico', express.static('./public/images/'));
@@ -193,7 +116,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(express.static('public'));
 
 app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
@@ -204,10 +127,7 @@ app.use('/users', usersRouter);
 app.use('/', indexRouter);
 app.use('/test/', testRouter);
 app.use('/login', loginRouter);
-app.use("/public/", express.static('public'));
-
-
-
+app.use(express.static('public'));
 
 
 // catch 404 and forward to error handler

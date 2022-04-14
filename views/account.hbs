@@ -9,7 +9,26 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+    <!-- FilePond Implementation -->
+
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.css" rel="stylesheet"/>
+
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+
+
 </head>
 <body>
 <h2>Hello {{ username }}! Edit your profile here!</h2>
@@ -36,9 +55,14 @@
         <label for="name">Image Upload:</label>
         <input type="file" class="filepond"/>
     </div>
-    <link href="filepond.css" rel="stylesheet" />
-    <script src="filepond.js"></script>
-
+    <div style="width: 50%">
+    <input type="file"
+           class="filepond"
+           name="profilePicture"
+           id="profilePicture"
+           accept="image/png, image/jpeg, image/gif"/>
+    </div>
+    <script src="javascripts/fileUpload.js"></script>
 
 
 
@@ -48,11 +72,9 @@
     <button class="btn btn-primary">Update</button>
 </form>
 
+<p><a href="../users" target="_blank">Edit your profile</a></p>
+<p><a href="../auth/logout" target="_blank">Logout of your Profile</a></p>
 
-<input type="file" id="profile"/>
-
-<script src="/public/javascripts/fileUpload.js"></script>
-<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 </body>
 
 

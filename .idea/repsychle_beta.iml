@@ -14,5 +14,10 @@
     <orderEntry type="library" name="filepond-plugin-image-preview" level="application" />
     <orderEntry type="library" name="filepond-plugin-image-resize" level="application" />
     <orderEntry type="library" name="filepond-plugin-file-encode" level="application" />
+    <orderEntry type="library" name="filepond-plugin-file-validate-type" level="application" />
+    <orderEntry type="library" name="filepond-plugin-image-exif-orientation" level="application" />
+    <orderEntry type="library" name="filepond-plugin-image-crop" level="application" />
+    <orderEntry type="library" name="filepond-plugin-image-transform" level="application" />
+    <orderEntry type="library" name="filepond-plugin-image-edit" level="application" />
   </component>
 </module>

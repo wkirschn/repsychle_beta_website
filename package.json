@@ -36,6 +36,7 @@
     "multer-gridfs-storage": "^5.0.2",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
+    "realm": "^10.14.0",
     "rollup": "^2.70.1"
   },
   "description": "Repsychle's Website Application to help users learn how to reuse, reduce, and recycle.",
