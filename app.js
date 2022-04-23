@@ -46,7 +46,7 @@ var logger = require('morgan');
 
 // Port
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 
 // Variables for Multer / Crypto / GridFS
@@ -221,6 +221,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.createServer(app).listen(app.get('port'),
+    function(){
+      console.log("Express server listening on port " + app.get('port'));
+    });
+
 
 
 
