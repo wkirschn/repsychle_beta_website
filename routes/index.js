@@ -79,8 +79,12 @@ router.get('/login', function(req, res, next) {
     res.render('login');
 });
 
-
-
+/* GET Register page. */
+router.get('/register', (req, res, next) => {
+/*    const messages = req.flash();
+    res.render('register', {messages})*/
+    res.render('register');
+});
 
 
 
@@ -108,10 +112,7 @@ router.post('/login', passport.authenticate('local',
 */
 
 
-router.get('/register', (req, res, next) => {
-    const messages = req.flash();
-    res.render('register', {messages})
-});
+
 
 router.post('/register', (req, res, next) => {
     const registrationParams = req.body;
