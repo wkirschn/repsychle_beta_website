@@ -46,7 +46,7 @@ var logger = require('morgan');
 
 // Port
 
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 3000
 
 
 // Variables for Multer / Crypto / GridFS
@@ -186,6 +186,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 const User = require('./models/user')
+const {httpOnly} = require("express-session/session/cookie");
 passport.use(User.createStrategy());
 
 // Requesting Passport to Read/Write to Sessions
@@ -222,11 +223,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.createServer(app).listen(app.get('port'),
-    function(){
-      console.log("Express server listening on port " + app.get('port'));
-    });
-
+app.listen(port, () => {
+    console.log(`Example app listening at Port: ${port}`)
+})
 
 
 
