@@ -10,9 +10,6 @@ const router = express.Router();
 console.log("Index.js works!");
 
 
-
-
-
 router.use(express.urlencoded({extended: false}))
 
 /* GET home page. */

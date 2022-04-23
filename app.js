@@ -46,9 +46,9 @@ var logger = require('morgan');
 
 // Port
 
-const port = process.env.PORT || 3000
+// const port = process.env.PORT || 3000
 
-
+ n
 // Variables for Multer / Crypto / GridFS
 
 const bodyparser = require('body-parser')
@@ -89,11 +89,11 @@ app.use(methodOverride('_method'))
 
 // Used to enable .env files to be used
 
-require('dotenv/config');
+// require('dotenv/config');
 
 // Used for ENV Connection String
 
-const dbURI = process.env.DATABASE_URL;
+// const dbURI = process.env.DATABASE_URL;
 
 // Favicon
 
