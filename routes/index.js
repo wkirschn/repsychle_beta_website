@@ -2,7 +2,7 @@ console.log("Index.js works!");
 const express = require('express');
 const passport = require("passport");
 const authUtils = require("../utils/auth");
-const imgModel = require("../models/profileImage");
+
 const path = require("path");
 const Object = require("../models/object.js");
 
