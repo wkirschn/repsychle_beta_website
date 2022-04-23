@@ -92,9 +92,9 @@ mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTop
 
 const Object =  require('./models/object')
 
-
-app.use('/favicon.ico', express.static('./public/images/'));
-
+//
+// app.use('/favicon.ico', express.static('./public/images/'));
+//
 
 
 // view engine setup
