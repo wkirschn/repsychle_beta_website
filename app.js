@@ -44,6 +44,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Port
+
+const port = process.env.PORT || 3000
+
 
 // Variables for Multer / Crypto / GridFS
 

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "mongodb": "node ./bin/script ",
-    "start": "node index.js"
+    "start": "node ./bin/www",
+    "start2": "nodemon app.js"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.2",
