@@ -97,7 +97,7 @@ const dbURI = process.env.DATABASE_URL;
 
 // Favicon
 
-app.use('/favicon.ico', express.static('./public/images/'));
+// app.use('/favicon.ico', express.static('./public/images/'));
 
 // /* Upload Middleware https://dev.to/cyberwolve/how-to-upload-and-store-images-in-mongodb-database-c3f */
 //
